@@ -64,9 +64,15 @@
         <div class="page-header">
             <div class="logo">
                 <a href="index.html" title="">
-                    <img src="" alt="">
+                    <img src="{{ asset('backend/images/logo.png') }}" alt="">
                 </a>
             </div>
+            <ul class="middle-nav">
+                <li><a href="#" class="btn btn-default"><i class="fa fa-comments-o"></i> <span>Support tickets</span></a><div class="label label-info">9</div></li>
+                <li><a href="#" class="btn btn-default"><i class="fa fa-bars"></i> <span>Statistics</span></a></li>
+                <li><a href="#" class="btn btn-default"><i class="fa fa-male"></i> <span>User list</span></a></li>
+                <li><a href="#" class="btn btn-default"><i class="fa fa-money"></i> <span>Billing panel</span></a></li>
+            </ul>
         </div>
     </div>
     <!-- /page header -->
@@ -80,6 +86,11 @@
         <!-- Page content -->
         <div class="page-content">
         {% block body %}{% endblock %}
+        <!-- Footer -->
+        <div class="footer">
+            &copy; Copyright 2015. Todos os Direitos reservados. Desenvolvido pela <a href="http://intrix.com.br" target="_blank" title="">Intrix</a>
+        </div>
+        <!-- /footer -->
     </div>
 </div>
 

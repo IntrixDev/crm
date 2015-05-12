@@ -1,5 +1,5 @@
-backend:
-    resource: "@BackendBundle/Resources/config/routing.yml"
+dashboard:
+    resource: "@DashboardBundle/Resources/config/routing.yml"
     prefix:   /
 
 _imagine:

@@ -25,6 +25,7 @@ class AppKernel extends Kernel {
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Intrix\DashboardBundle\DashboardBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
