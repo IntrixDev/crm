@@ -1,0 +1,108 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Intrix - Painel administrativo</title>
+
+        <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('backend/css/brain-theme.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('backend/css/styles.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('backend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/uniform.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/select2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/inputmask.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/autosize.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/inputlimit.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/listbox.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/multiselect.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/validate.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/tags.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/uploader/plupload.full.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/uploader/plupload.queue.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/wysihtml5/wysihtml5.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/wysihtml5/toolbar.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/jgrowl.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/datatables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/prettify.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/fancybox.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/colorpicker.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/timepicker.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/fullcalendar.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/collapsible.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('backend/js/application.js') }}"></script>
+
+    </head>
+
+    <body class="full-width">
+
+        <!-- Navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            
+        </div>
+        <!-- /navbar -->
+
+
+        <!-- Page container -->
+        <div class="page-container container">
+
+            <!-- Page content -->
+            <div class="page-content">
+                <!-- Login wrapper -->
+                <div class="login-wrapper">
+                    <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h6 class="panel-title"><i class="fa fa-user"></i> Acessar ao painel administrativo</h6></div>
+                            <div class="panel-body">
+                                <div class="form-group has-feedback">
+                                    <label>Usuário</label>
+                                    <input type="text" class="form-control" placeholder="Usuário" id="username" name="_username" value="{{ last_username }}" required="required">
+                                    <i class="fa fa-user form-control-feedback"></i>
+                                </div>
+
+                                <div class="form-group has-feedback">
+                                    <label>Senha</label>
+                                    <input type="password" class="form-control" placeholder="Password" id="password" name="_password" required="required">
+                                    <i class="fa fa-lock form-control-feedback"></i>
+                                </div>
+
+                                <div class="row form-actions">
+                                    <div class="col-xs-6">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="styled" id="remember_me" name="_remember_me" value="on">
+                                                Relembrar
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <button type="submit"  id="_submit" name="_submit" class="btn btn-warning pull-right"><i class="fa fa-bars"></i> Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+                <!-- /login wrapper -->      
+
+
+            </div>
+            <!-- /page content -->
+
+        </div>
+        <!-- page container -->
+
+    </body>
+</html>
