@@ -1,0 +1,51 @@
+{% extends 'BackendBundle:Layout:layout.html.twig' %}
+
+{% block body %}
+    <!-- Page title -->
+    <div class="page-title">
+        <h5><i class="fa fa-table"></i> Dashboard <small>A seguir a lista com todos os dashboard disponíveis .</small></h5>
+    </div>
+    <!-- /page title -->
+
+    <!-- Some controls -->
+    <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title">Lista de dashboards</h6></div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for oDashboard in aDashboard %}
+                        <tr>
+                            <td class="text-center">{{ oDashboard.nome }}</td>
+                            <td class="text-center">{{ oDashboard.descricao }}</td>
+                            <td class="text-center">
+                                {% if oDashboard.id in aAtivos %}
+                                    <span class="label label-success">Ativo</span>
+                                {% else %}
+                                    <span class="label label-danger">Inativo</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="table-controls">
+                                    {% if oDashboard.id in aAtivos %}
+                                        <a class="btn btn-danger" href='{{ path('gerenciador_delete', {'id': oDashboard.id}) }}'>Inativar</a>
+                                    {% else %}
+                                        <a class="btn btn-success" href='{{ path('gerenciador_create', {'id': oDashboard.id}) }}'>Ativar</a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /some controls -->
+{% endblock %}

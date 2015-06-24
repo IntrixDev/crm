@@ -1,3 +1,4 @@
-dashboard_homepage:
-    path:     /
-    defaults: { _controller: DashboardBundle:Default:index }
+dashboard:
+        resource: "@DashboardBundle/Resources/config/routing/dashboard.yml"
+        prefix:   /dashboard
+    

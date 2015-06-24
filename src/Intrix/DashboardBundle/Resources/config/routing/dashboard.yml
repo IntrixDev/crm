@@ -1,0 +1,15 @@
+dashboard_list:
+    path:     /
+    defaults: { _controller: "DashboardBundle:Default:index" }
+
+gerenciador_list:
+    path:     /gerenciar
+    defaults: { _controller: "DashboardBundle:Gerenciador:index" }
+
+gerenciador_delete:
+    path:     /deletar/{id}
+    defaults: { _controller: "DashboardBundle:Gerenciador:delete" }
+
+gerenciador_create:
+    path:     /adicionar/{id}
+    defaults: { _controller: "DashboardBundle:Gerenciador:create" }
