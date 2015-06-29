@@ -1,5 +1,5 @@
 dashboard:
-    resource: "@DashboardBundle/Resources/config/routing.yml"
+    resource: "@BackendBundle/Resources/config/routing.yml"
     prefix:   /
 
 _imagine:

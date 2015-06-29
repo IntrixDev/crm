@@ -1,0 +1,46 @@
+{% extends 'BackendBundle:Layout:layout.html.twig' %}
+
+{% block body %}
+
+    <!-- Page title -->
+    <div class="page-title">
+        <h5><i class="fa fa-file-o"></i> Lista dos seguimentos</h5>
+        <div class="btn-group">
+            <a href="#" class="btn btn-link btn-lg btn-icon dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i><span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="{{ path('seguimento_new') }}">Adicionar uma novo seguimento</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">Seguimento</h6>
+        </div>
+        <div class="datatable">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in entities %}
+                        <tr class="success">
+                            <td>{{ entity.nome }}</td>
+                            <td>{{ entity.descricao }}</td>
+                            <td>
+                                <div class="table-controls">
+                                    <a title="" class="btn btn-default btn-icon btn-xs tip" href="{{ path('seguimento_edit', { 'id': entity.id }) }}" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
