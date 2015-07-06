@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Seguimento
-{
+class Seguimento {
+
     /**
      * @var integer
      *
@@ -35,14 +35,21 @@ class Seguimento
      */
     private $descricao;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Empresa", mappedBy="seguimento")
+     * */
+    private $empresas;
+
+    public function __construct() {
+        $this->empresas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,10 +60,9 @@ class Seguimento
      *
      * @return Seguimento
      */
-    public function setNome($nome)
-    {
+    public function setNome($nome) {
         $this->nome = $nome;
-    
+
         return $this;
     }
 
@@ -65,8 +71,7 @@ class Seguimento
      *
      * @return string
      */
-    public function getNome()
-    {
+    public function getNome() {
         return $this->nome;
     }
 
@@ -77,10 +82,9 @@ class Seguimento
      *
      * @return Seguimento
      */
-    public function setDescricao($descricao)
-    {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
-    
+
         return $this;
     }
 
@@ -89,9 +93,42 @@ class Seguimento
      *
      * @return string
      */
-    public function getDescricao()
-    {
+    public function getDescricao() {
         return $this->descricao;
     }
-}
 
+
+    /**
+     * Add empresa
+     *
+     * @param \Intrix\BackendBundle\Entity\Empresa $empresa
+     *
+     * @return Seguimento
+     */
+    public function addEmpresa(\Intrix\BackendBundle\Entity\Empresa $empresa)
+    {
+        $this->empresas[] = $empresa;
+    
+        return $this;
+    }
+
+    /**
+     * Remove empresa
+     *
+     * @param \Intrix\BackendBundle\Entity\Empresa $empresa
+     */
+    public function removeEmpresa(\Intrix\BackendBundle\Entity\Empresa $empresa)
+    {
+        $this->empresas->removeElement($empresa);
+    }
+
+    /**
+     * Get empresas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpresas()
+    {
+        return $this->empresas;
+    }
+}
