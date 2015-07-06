@@ -2,6 +2,7 @@
 
 namespace Intrix\BackendBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,15 +25,17 @@ class Empresa {
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nome", type="string", length=255)
+     * 
+     * @Assert\NotBlank(message = "Esse campo não pode ficar em branco.")
+     * @ORM\Column(name="nome", type="string", length=255, nullable=true)
      */
     private $nome;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="telefone", type="string", length=255)
+     * 
+     * @Assert\NotBlank(message = "Esse campo não pode ficar em branco.")
+     * @ORM\Column(name="telefone", type="string", length=255, nullable=true)
      */
     private $telefone;
 
@@ -57,14 +60,12 @@ class Empresa {
      * */
     private $seguimento;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,10 +76,9 @@ class Empresa {
      *
      * @return Empresa
      */
-    public function setNome($nome)
-    {
+    public function setNome($nome) {
         $this->nome = $nome;
-    
+
         return $this;
     }
 
@@ -87,8 +87,7 @@ class Empresa {
      *
      * @return string
      */
-    public function getNome()
-    {
+    public function getNome() {
         return $this->nome;
     }
 
@@ -99,10 +98,9 @@ class Empresa {
      *
      * @return Empresa
      */
-    public function setTelefone($telefone)
-    {
+    public function setTelefone($telefone) {
         $this->telefone = $telefone;
-    
+
         return $this;
     }
 
@@ -111,8 +109,7 @@ class Empresa {
      *
      * @return string
      */
-    public function getTelefone()
-    {
+    public function getTelefone() {
         return $this->telefone;
     }
 
@@ -123,10 +120,9 @@ class Empresa {
      *
      * @return Empresa
      */
-    public function setSite($site)
-    {
+    public function setSite($site) {
         $this->site = $site;
-    
+
         return $this;
     }
 
@@ -135,8 +131,7 @@ class Empresa {
      *
      * @return string
      */
-    public function getSite()
-    {
+    public function getSite() {
         return $this->site;
     }
 
@@ -147,10 +142,9 @@ class Empresa {
      *
      * @return Empresa
      */
-    public function setData($data)
-    {
+    public function setData($data) {
         $this->data = $data;
-    
+
         return $this;
     }
 
@@ -159,8 +153,7 @@ class Empresa {
      *
      * @return \DateTime
      */
-    public function getData()
-    {
+    public function getData() {
         return $this->data;
     }
 
@@ -171,10 +164,9 @@ class Empresa {
      *
      * @return Empresa
      */
-    public function setSeguimento(\Intrix\BackendBundle\Entity\Seguimento $seguimento = null)
-    {
+    public function setSeguimento(\Intrix\BackendBundle\Entity\Seguimento $seguimento = null) {
         $this->seguimento = $seguimento;
-    
+
         return $this;
     }
 
@@ -183,8 +175,8 @@ class Empresa {
      *
      * @return \Intrix\BackendBundle\Entity\Seguimento
      */
-    public function getSeguimento()
-    {
+    public function getSeguimento() {
         return $this->seguimento;
     }
+
 }

@@ -1,5 +1,11 @@
 {% extends 'BackendBundle:Layout:layout.html.twig' %}
 
 {% block body %}
+    <div class="page-title">
+        <h5><i class="fa fa-file-o"></i> Editando a empresa: {{ edit_form.vars.value.nome }}</h5>
+    </div>
+
+    <!-- Right labels -->
     {{ form(edit_form) }}
+
 {% endblock %}

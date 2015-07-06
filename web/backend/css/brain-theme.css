@@ -3002,7 +3002,7 @@ a.list-group-item-info.active:focus {
 .table > thead > tr.danger > th, 
 .table > tbody > tr.danger > th, 
 .table > tfoot > tr.danger > th {
-  background-color: #FEC6C6;
+  background-color: #FDF5F5;
 }
 
 .table > thead > tr > td.success, 
@@ -3017,7 +3017,7 @@ a.list-group-item-info.active:focus {
 .table > thead > tr.success > th, 
 .table > tbody > tr.success > th, 
 .table > tfoot > tr.success > th {
-  background-color: #CAFFBF;
+  background-color: #F5FAF4;
 }
 
 .table > thead > tr > td.warning, 

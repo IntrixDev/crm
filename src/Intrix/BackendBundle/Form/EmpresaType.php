@@ -15,13 +15,13 @@ class EmpresaType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('seguimento', 'entity', array(
-                    'empty_value' => 'Selecione...',
+                    'empty_value' => 'Escolha um seguimento...',
                     'class' => 'BackendBundle:Seguimento',
                     'property' => 'nome',
                     'attr' => array(
-                        'placeholder' => 'Escolha um seguimento...',
-                        'class' => 'select',
-                        'tabindex' => '8'
+                        'data-placeholder' => 'Escolha um seguimento...',
+                        'class' => 'select-search',
+                        'tabindex' => '2'
                     ),
                     'label' => 'Seguimento',
                 ))
@@ -36,7 +36,7 @@ class EmpresaType extends AbstractType {
                 ->add('site', 'text', array(
                     'attr' => array('class' => 'form-control'),
                     'label' => 'Site',
-                ));
+        ));
     }
 
     /**
@@ -48,7 +48,7 @@ class EmpresaType extends AbstractType {
             'attr' => array(
                 'class' => 'form-horizontal',
                 'role' => 'form',
-                'titulo' => 'Empresa'
+                'titulo' => 'Dados cadastrais de uma empresa'
             ),
         ));
     }

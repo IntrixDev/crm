@@ -15,18 +15,9 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.orderbars.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.pie.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.time.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.animator.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/excanvas.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/charts/flot.resize.min.js') }}"></script>
-
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/uniform.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/select2.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/inputmask.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/jquery.mask.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/autosize.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/inputlimit.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/forms/listbox.js') }}"></script>
@@ -48,51 +39,50 @@
         <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/timepicker.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/fullcalendar.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/plugins/interface/collapsible.min.js') }}"></script>
+        
         <script type="text/javascript" src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/js/application.js') }}"></script>
-    {% block javascript %}{% endblock %}
-    <script type="text/javascript" src="{{ asset('backend/js/charts/simple_graph.js') }}"></script>
 
-</head>
+    </head>
 
-<body>
-    {{ render(controller('BackendBundle:Layout:navTop', { local: app.request.attributes.get('_route')} )) }}
+    <body>
+        {{ render(controller('BackendBundle:Layout:navTop', { local: app.request.attributes.get('_route')} )) }}
 
 
-    <!-- Page header -->
-    <div class="container">
-        <div class="page-header">
-            <div class="logo">
-                <a href="index.html" title="">
-                    <img src="{{ asset('backend/images/logo.png') }}" alt="">
-                </a>
+        <!-- Page header -->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="logo">
+                    <a href="index.html" title="">
+                        <img src="{{ asset('backend/images/logo.png') }}" alt="">
+                    </a>
+                </div>
+                <ul class="middle-nav">
+                    <li><a href="#" class="btn btn-default"><i class="fa fa-comments-o"></i> <span>Support tickets</span></a><div class="label label-info">9</div></li>
+                    <li><a href="#" class="btn btn-default"><i class="fa fa-bars"></i> <span>Statistics</span></a></li>
+                    <li><a href="#" class="btn btn-default"><i class="fa fa-male"></i> <span>User list</span></a></li>
+                    <li><a href="#" class="btn btn-default"><i class="fa fa-money"></i> <span>Billing panel</span></a></li>
+                </ul>
             </div>
-            <ul class="middle-nav">
-                <li><a href="#" class="btn btn-default"><i class="fa fa-comments-o"></i> <span>Support tickets</span></a><div class="label label-info">9</div></li>
-                <li><a href="#" class="btn btn-default"><i class="fa fa-bars"></i> <span>Statistics</span></a></li>
-                <li><a href="#" class="btn btn-default"><i class="fa fa-male"></i> <span>User list</span></a></li>
-                <li><a href="#" class="btn btn-default"><i class="fa fa-money"></i> <span>Billing panel</span></a></li>
-            </ul>
+        </div>
+        <!-- /page header -->
+
+
+        <!-- Page container -->
+        <div class="page-container container-fluid">
+
+            {{ render(controller('BackendBundle:Layout:navLeft', { local: app.request.attributes.get('_route')} )) }}
+
+            <!-- Page content -->
+            <div class="page-content">
+            {% block body %}{% endblock %}
+            <!-- Footer -->
+            <div class="footer">
+                &copy; Copyright 2015. Todos os Direitos reservados. Desenvolvido pela <a href="http://intrix.com.br" target="_blank" title="">Intrix</a>
+            </div>
+            <!-- /footer -->
         </div>
     </div>
-    <!-- /page header -->
-
-
-    <!-- Page container -->
-    <div class="page-container container">
-
-        {{ render(controller('BackendBundle:Layout:navLeft', { local: app.request.attributes.get('_route')} )) }}
-
-        <!-- Page content -->
-        <div class="page-content">
-        {% block body %}{% endblock %}
-        <!-- Footer -->
-        <div class="footer">
-            &copy; Copyright 2015. Todos os Direitos reservados. Desenvolvido pela <a href="http://intrix.com.br" target="_blank" title="">Intrix</a>
-        </div>
-        <!-- /footer -->
-    </div>
-</div>
 
 </body>
 </html>

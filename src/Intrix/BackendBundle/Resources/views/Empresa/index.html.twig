@@ -30,10 +30,10 @@
                     {% for entity in entities %}
                         <tr class="success">
                             <td>{{ entity.nome }}</td>
-                            <td>{{ entity.descricao }}</td>
+                            <td>{{ entity.telefone }}</td>
                             <td>
                                 <div class="table-controls">
-                                    <a title="" class="btn btn-default btn-icon btn-xs tip" href="{{ path('seguimento_edit', { 'id': entity.id }) }}" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
+                                    <a title="" class="btn btn-default btn-icon btn-xs tip" href="{{ path('empresa_edit', { 'id': entity.id }) }}" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </td>
                         </tr>

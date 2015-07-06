@@ -8,6 +8,7 @@
             {% set form_method = "POST" %}
         {% endif %}
         <form 
+            novalidate="novalidate"
             name="{{ form.vars.name }}" 
             method="{{ form_method|lower }}" 
             action="{{ action }}"
@@ -28,7 +29,7 @@
     <!-- form_widget_compound -->
     {% block form_widget_compound %}
         {% spaceless %}
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h6 class="panel-title">
                         {% if attr.titulo is defined %}
@@ -38,9 +39,9 @@
                 </div>
                 <div class="panel-body">
                     {% for flashMessage in app.session.flashbag.get('notice') %}
-                        <div class="alert alert-success fade in widget-inner">
+                        <div class="alert bg-{{ flashMessage.type }} fade in widget-inner">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <i class="fa fa-check"></i> {{ flashMessage }}
+                            <i class="fa fa-check"></i> {{ flashMessage.message }}
                         </div>
                     {% endfor %}
 
@@ -58,8 +59,9 @@
     {% block form_widget_simple %}
         {% spaceless %}
             {% set type = type|default('text') %}
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                {{ form_errors(form) }}
             </div>
         {% endspaceless %}
     {% endblock form_widget_simple %}
@@ -69,7 +71,6 @@
         {% spaceless %}
             <div class="form-group">
                 {{ form_label(form) }}
-                {{ form_errors(form) }}
                 {{ form_widget(form) }}
             </div>
         {% endspaceless %}
@@ -78,14 +79,14 @@
     <!-- form_label -->
     {% block form_label %}
         {% spaceless %}
-            <label class="col-sm-3 control-label text-right">{{ label|trans({}, translation_domain) }}:</label>
+            <label for="{{ id }}" class="col-sm-2 control-label">{{ label|trans({}, translation_domain) }}:</label>
         {% endspaceless %}
     {% endblock form_label %}
 
     <!-- textarea_widget -->
     {% block textarea_widget %}
         {% spaceless %}
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
             </div>
         {% endspaceless %}
@@ -97,7 +98,7 @@
             {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
                 {% set required = false %}
             {% endif %}
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
                     {% if empty_value is not none %}
                         <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
@@ -125,9 +126,19 @@
         {% endspaceless %}
     {% endblock button_widget %}
 
+    <!-- money_widget -->
     {% block money_widget %}
         {% spaceless %}
             {{ block('form_widget_simple') }}
         {% endspaceless %}
     {% endblock money_widget %}
+
+    <!-- form_errors -->
+    {% block form_errors %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+                <label for="{{ id }}" class="error">{{ error.message }}</label>
+            {% endfor %}
+        {% endif %}
+    {% endblock form_errors %}
 

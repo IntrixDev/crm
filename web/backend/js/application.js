@@ -1,20 +1,6 @@
-
-/* ========================================================
- *
- * It's Brain - premium responsive admin template
- *
- * ========================================================
- *
- * File: application_blank.js;
- * Description: Minimum of necessary js code for blank page.
- * Version: 1.0
- *
- * ======================================================== */
-
-
-
 $(function () {
-    $(".preco").mask('000.000.000.000.000,00', {reverse: true});
+
+
     /* # Data tables
      ================================================== */
 
@@ -50,7 +36,6 @@ $(function () {
             "sLengthMenu": "<span>Show:</span> _MENU_",
             "sZeroRecords": "Desculpa, mas não encontramos nenhum registro",
             "oPaginate": {"sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<"},
-            
         },
         "oTableTools": {
             "sRowSelect": "multi",
