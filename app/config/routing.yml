@@ -1,3 +1,7 @@
+empresa:
+    resource: "@EmpresaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dashboard:
     resource: "@BackendBundle/Resources/config/routing.yml"
     prefix:   /
