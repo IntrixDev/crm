@@ -1,0 +1,21 @@
+empresa:
+    path:     /
+    defaults: { _controller: "EmpresaBundle:Empresa:index" }
+
+empresa_new:
+    path:     /novo
+    defaults: { _controller: "EmpresaBundle:Empresa:new" }
+
+empresa_create:
+    path:     /criar
+    defaults: { _controller: "EmpresaBundle:Empresa:create" }
+    methods:  POST
+
+empresa_edit:
+    path:     /{id}/editar
+    defaults: { _controller: "EmpresaBundle:Empresa:edit" }
+
+empresa_update:
+    path:     /{id}/atualizar
+    defaults: { _controller: "EmpresaBundle:Empresa:update" }
+    methods:  [POST, PUT]

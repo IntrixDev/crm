@@ -1,11 +1,11 @@
 <?php
 
-namespace Intrix\BackendBundle\Controller;
+namespace Intrix\EmpresaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Intrix\BackendBundle\Entity\Seguimento;
-use Intrix\BackendBundle\Form\SeguimentoType;
+use Intrix\EmpresaBundle\Entity\Seguimento;
+use Intrix\EmpresaBundle\Form\SeguimentoType;
 
 /**
  * Seguimento controller.
@@ -20,9 +20,9 @@ class SeguimentoController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BackendBundle:Seguimento')->findAll();
+        $entities = $em->getRepository('EmpresaBundle:Seguimento')->findAll();
 
-        return $this->render('BackendBundle:Seguimento:index.html.twig', array(
+        return $this->render('EmpresaBundle:Seguimento:index.html.twig', array(
                     'entities' => $entities,
         ));
     }
@@ -35,7 +35,7 @@ class SeguimentoController extends Controller {
         $entity = new Seguimento();
         $form = $this->createCreateForm($entity);
 
-        return $this->render('BackendBundle:Seguimento:new.html.twig', array(
+        return $this->render('EmpresaBundle:Seguimento:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
         ));
@@ -79,7 +79,7 @@ class SeguimentoController extends Controller {
             return $this->redirect($this->generateUrl('seguimento_new'));
         }
 
-        return $this->render('BackendBundle:Seguimento:new.html.twig', array(
+        return $this->render('EmpresaBundle:Seguimento:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
         ));
@@ -92,7 +92,7 @@ class SeguimentoController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BackendBundle:Seguimento')->find($id);
+        $entity = $em->getRepository('EmpresaBundle:Seguimento')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Não foi possivel encontrar esse seguimento.');
@@ -100,7 +100,7 @@ class SeguimentoController extends Controller {
 
         $editForm = $this->createEditForm($entity);
 
-        return $this->render('BackendBundle:Seguimento:edit.html.twig', array(
+        return $this->render('EmpresaBundle:Seguimento:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
         ));
@@ -131,7 +131,7 @@ class SeguimentoController extends Controller {
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BackendBundle:Seguimento')->find($id);
+        $entity = $em->getRepository('EmpresaBundle:Seguimento')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Não foi possivel encontrar esse seguimento.');
@@ -150,7 +150,7 @@ class SeguimentoController extends Controller {
             return $this->redirect($this->generateUrl('seguimento_edit', array('id' => $id)));
         }
 
-        return $this->render('BackendBundle:Seguimento:edit.html.twig', array(
+        return $this->render('EmpresaBundle:Seguimento:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
         ));

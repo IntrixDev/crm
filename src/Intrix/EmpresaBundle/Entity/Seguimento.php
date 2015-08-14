@@ -1,6 +1,6 @@
 <?php
 
-namespace Intrix\BackendBundle\Entity;
+namespace Intrix\EmpresaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -101,11 +101,11 @@ class Seguimento {
     /**
      * Add empresa
      *
-     * @param \Intrix\BackendBundle\Entity\Empresa $empresa
+     * @param \Intrix\EmpresaBundle\Entity\Empresa $empresa
      *
      * @return Seguimento
      */
-    public function addEmpresa(\Intrix\BackendBundle\Entity\Empresa $empresa)
+    public function addEmpresa(\Intrix\EmpresaBundle\Entity\Empresa $empresa)
     {
         $this->empresas[] = $empresa;
     
@@ -115,9 +115,9 @@ class Seguimento {
     /**
      * Remove empresa
      *
-     * @param \Intrix\BackendBundle\Entity\Empresa $empresa
+     * @param \Intrix\EmpresaBundle\Entity\Empresa $empresa
      */
-    public function removeEmpresa(\Intrix\BackendBundle\Entity\Empresa $empresa)
+    public function removeEmpresa(\Intrix\EmpresaBundle\Entity\Empresa $empresa)
     {
         $this->empresas->removeElement($empresa);
     }

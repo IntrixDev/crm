@@ -1,0 +1,21 @@
+seguimento:
+    path:     /
+    defaults: { _controller: "EmpresaBundle:Seguimento:index" }
+
+seguimento_new:
+    path:     /novo
+    defaults: { _controller: "EmpresaBundle:Seguimento:new" }
+
+seguimento_create:
+    path:     /criar
+    defaults: { _controller: "EmpresaBundle:Seguimento:create" }
+    methods:  POST
+
+seguimento_edit:
+    path:     /{id}/editar
+    defaults: { _controller: "EmpresaBundle:Seguimento:edit" }
+
+seguimento_update:
+    path:     /{id}/atualizar
+    defaults: { _controller: "EmpresaBundle:Seguimento:update" }
+    methods:  [POST, PUT]

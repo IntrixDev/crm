@@ -1,12 +1,3 @@
-backend_empresa:
-    resource: "@BackendBundle/Resources/config/routing/empresa.yml"
-    prefix:   /empresa
-
 dashboard:
     resource: "@DashboardBundle/Resources/config/routing.yml"
     prefix:   /
-    
-backend_seguimento:
-    resource: "@BackendBundle/Resources/config/routing/seguimento.yml"
-    prefix:   /seguimento
-

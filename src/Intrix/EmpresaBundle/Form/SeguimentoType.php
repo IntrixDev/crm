@@ -1,6 +1,6 @@
 <?php
 
-namespace Intrix\BackendBundle\Form;
+namespace Intrix\EmpresaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +33,7 @@ class SeguimentoType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Intrix\BackendBundle\Entity\Seguimento',
+            'data_class' => 'Intrix\EmpresaBundle\Entity\Seguimento',
             'attr' => array(
                 'class' => 'form-horizontal',
                 'role' => 'form',
@@ -46,7 +46,7 @@ class SeguimentoType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'intrix_backendbundle_seguimento';
+        return 'intrix_empresabundle_seguimento';
     }
 
 }

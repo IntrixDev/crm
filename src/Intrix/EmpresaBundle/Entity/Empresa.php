@@ -1,6 +1,6 @@
 <?php
 
-namespace Intrix\BackendBundle\Entity;
+namespace Intrix\EmpresaBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -160,11 +160,11 @@ class Empresa {
     /**
      * Set seguimento
      *
-     * @param \Intrix\BackendBundle\Entity\Seguimento $seguimento
+     * @param \Intrix\EmpresaBundle\Entity\Seguimento $seguimento
      *
      * @return Empresa
      */
-    public function setSeguimento(\Intrix\BackendBundle\Entity\Seguimento $seguimento = null) {
+    public function setSeguimento(\Intrix\EmpresaBundle\Entity\Seguimento $seguimento = null) {
         $this->seguimento = $seguimento;
 
         return $this;
@@ -173,7 +173,7 @@ class Empresa {
     /**
      * Get seguimento
      *
-     * @return \Intrix\BackendBundle\Entity\Seguimento
+     * @return \Intrix\EmpresaBundle\Entity\Seguimento
      */
     public function getSeguimento() {
         return $this->seguimento;

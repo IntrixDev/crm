@@ -1,6 +1,6 @@
 <?php
 
-namespace Intrix\BackendBundle\Form;
+namespace Intrix\EmpresaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +16,7 @@ class EmpresaType extends AbstractType {
         $builder
                 ->add('seguimento', 'entity', array(
                     'empty_value' => 'Escolha um seguimento...',
-                    'class' => 'BackendBundle:Seguimento',
+                    'class' => 'EmpresaBundle:Seguimento',
                     'property' => 'nome',
                     'attr' => array(
                         'data-placeholder' => 'Escolha um seguimento...',
@@ -44,7 +44,7 @@ class EmpresaType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Intrix\BackendBundle\Entity\Empresa',
+            'data_class' => 'Intrix\EmpresaBundle\Entity\Empresa',
             'attr' => array(
                 'class' => 'form-horizontal',
                 'role' => 'form',
@@ -57,7 +57,7 @@ class EmpresaType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'intrix_backendbundle_empresa';
+        return 'intrix_empresabundle_empresa';
     }
 
 }

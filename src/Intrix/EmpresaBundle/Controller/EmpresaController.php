@@ -1,12 +1,12 @@
 <?php
 
-namespace Intrix\BackendBundle\Controller;
+namespace Intrix\EmpresaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Intrix\BackendBundle\Entity\Empresa;
-use Intrix\BackendBundle\Form\EmpresaType;
+use Intrix\EmpresaBundle\Entity\Empresa;
+use Intrix\EmpresaBundle\Form\EmpresaType;
 
 /**
  * Empresa controller.
@@ -23,9 +23,9 @@ class EmpresaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BackendBundle:Empresa')->findAll();
+        $entities = $em->getRepository('EmpresaBundle:Empresa')->findAll();
 
-        return $this->render('BackendBundle:Empresa:index.html.twig', array(
+        return $this->render('EmpresaBundle:Empresa:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -39,7 +39,7 @@ class EmpresaController extends Controller
         $entity = new Empresa();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('BackendBundle:Empresa:new.html.twig', array(
+        return $this->render('EmpresaBundle:Empresa:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -78,7 +78,7 @@ class EmpresaController extends Controller
         }
 
 
-        return $this->render('BackendBundle:Empresa:new.html.twig', array(
+        return $this->render('EmpresaBundle:Empresa:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -111,7 +111,7 @@ class EmpresaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BackendBundle:Empresa')->find($id);
+        $entity = $em->getRepository('EmpresaBundle:Empresa')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Não foi possivel encontrar esse(a) Empresa.');
@@ -119,7 +119,7 @@ class EmpresaController extends Controller
 
         $editForm = $this->createEditForm($entity);
 
-        return $this->render('BackendBundle:Empresa:edit.html.twig', array(
+        return $this->render('EmpresaBundle:Empresa:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
         ));
@@ -151,7 +151,7 @@ class EmpresaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BackendBundle:Empresa')->find($id);
+        $entity = $em->getRepository('EmpresaBundle:Empresa')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Não foi possivel encontrar esse(a) Empresa.');
@@ -180,7 +180,7 @@ class EmpresaController extends Controller
             );
         }
 
-        return $this->render('BackendBundle:Empresa:edit.html.twig', array(
+        return $this->render('EmpresaBundle:Empresa:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
         ));
