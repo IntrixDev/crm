@@ -1,3 +1,7 @@
+contato:
+    resource: "@ContatoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 empresa:
     resource: "@EmpresaBundle/Resources/config/routing.yml"
     prefix:   /empresa
