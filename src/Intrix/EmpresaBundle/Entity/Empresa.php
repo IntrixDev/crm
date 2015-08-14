@@ -42,9 +42,17 @@ class Empresa {
     /**
      * @var string
      *
+     * @Assert\Url(message = "Essa site não confere. Insira 'http://' no inicio da URL")
      * @ORM\Column(name="site", type="string", length=255)
      */
     private $site;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacao", type="string", length=400)
+     */
+    private $observacao;
 
     /**
      * @var \DateTime
@@ -133,6 +141,28 @@ class Empresa {
      */
     public function getSite() {
         return $this->site;
+    }
+
+    /**
+     * Set observacao
+     *
+     * @param string $observacao
+     *
+     * @return Empresa
+     */
+    public function setObservacao($observacao) {
+        $this->observacao = $observacao;
+
+        return $this;
+    }
+
+    /**
+     * Get observacao
+     *
+     * @return string
+     */
+    public function getObservacao() {
+        return $this->observacao;
     }
 
     /**

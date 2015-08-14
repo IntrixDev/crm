@@ -36,6 +36,14 @@ class EmpresaType extends AbstractType {
                 ->add('site', 'text', array(
                     'attr' => array('class' => 'form-control'),
                     'label' => 'Site',
+                ))
+                ->add('observacao', 'textarea', array(
+                    'label' => 'Observação',
+                    'attr' => array(
+                        'rows' => '5',
+                        'cols' => '5',
+                        'class' => 'form-control'
+                    )
         ));
     }
 
