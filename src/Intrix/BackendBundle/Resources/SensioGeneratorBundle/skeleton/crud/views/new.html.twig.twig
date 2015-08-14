@@ -1,0 +1,9 @@
+{% block extends %}
+{{ "{% extends 'BackendBundle:Layout:layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block body -%}" }}
+    {{ '{{ form(form) }}' }}
+{{ "{% endblock %}" }}
+{% endblock body %}

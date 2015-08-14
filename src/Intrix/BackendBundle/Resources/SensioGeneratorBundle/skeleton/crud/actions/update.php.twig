@@ -1,0 +1,52 @@
+{% extends "skeleton/crud/actions/update.php.twig" %}
+
+{% block phpdoc_method_header %}
+     * Edita um(a) {{ entity }}
+{% endblock phpdoc_method_header %}
+
+{% block method_body %}
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Não foi possivel encontrar esse(a) {{ entity }}.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => '{{ entity_class }} editada com sucesso!',
+                    'type' => 'success'
+                )
+            );
+
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+        } else {
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => 'Ops, tivemos alguns problema, reveja o formulário!',
+                    'type' => 'danger'
+                )
+            );
+        }
+{% endblock method_body %}
+
+{% block method_return %}
+{% if 'annotation' == format %}
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        );
+{% else %}
+        return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        ));
+{% endif %}
+{% endblock method_return %}

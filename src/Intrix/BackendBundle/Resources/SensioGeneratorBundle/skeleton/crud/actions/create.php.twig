@@ -1,0 +1,56 @@
+{% extends "skeleton/crud/actions/create.php.twig" %}
+
+{% block phpdoc_method_header %}
+     * Cria um novo(a) {{ entity }}.
+{% endblock phpdoc_method_header %}
+
+{% block method_body %}
+        $entity = new {{ entity_class }}();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => '{{ entity_class }} salva com sucesso!',
+                    'type' => 'success'
+                )
+            );
+
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+
+        } else {
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => 'Ops, tivemos alguns problema, reveja o formulário!',
+                    'type' => 'danger'
+                )
+            );
+        }
+
+{% endblock method_body %}
+
+{% block form %}
+    /**
+     * Cria o formulário para {{ entity }}
+     *
+     * @param {{ entity_class }} $entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm({{ entity_class }} $entity)
+    {
+        $form = $this->createForm(new {{ entity_class }}Type(), $entity, array(
+            'action' => $this->generateUrl('{{ route_name_prefix }}_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Criar'));
+
+        return $form;
+    }
+{% endblock form %}

@@ -4,6 +4,7 @@ namespace Intrix\BackendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Intrix\BackendBundle\Entity\Empresa;
 use Intrix\BackendBundle\Form\EmpresaType;
 
@@ -11,27 +12,44 @@ use Intrix\BackendBundle\Form\EmpresaType;
  * Empresa controller.
  *
  */
-class EmpresaController extends Controller {
+class EmpresaController extends Controller
+{
 
     /**
-     * Lists all Empresa entities.
+    * Lista todos os registros do(a) Empresa.
      *
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('BackendBundle:Empresa')->findAll();
 
         return $this->render('BackendBundle:Empresa:index.html.twig', array(
-                    'entities' => $entities,
+            'entities' => $entities,
         ));
     }
 
     /**
-     * Creates a new Empresa entity.
+     * Mostra o formulário para criar um(a) novo(a) Empresa.
      *
      */
-    public function createAction(Request $request) {
+    public function newAction()
+    {
+        $entity = new Empresa();
+        $form   = $this->createCreateForm($entity);
+
+        return $this->render('BackendBundle:Empresa:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+    /**
+     * Cria um novo(a) Empresa.
+     *
+     */
+    public function createAction(Request $request)
+    {
         $entity = new Empresa();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -41,106 +59,103 @@ class EmpresaController extends Controller {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('empresa_show', array('id' => $entity->getId())));
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => 'Empresa salva com sucesso!',
+                    'type' => 'success'
+                )
+            );
+
+            return $this->redirect($this->generateUrl('empresa'));
+
         } else {
             $request->getSession()->getFlashBag()->add(
-                    'notice', array(
-                'message' => 'Ops, tivemos alguns problema, reveja o formulário!',
-                'type' => 'error'
-                    )
+                'notice', array(
+                    'message' => 'Ops, tivemos alguns problema, reveja o formulário!',
+                    'type' => 'danger'
+                )
             );
         }
 
+
         return $this->render('BackendBundle:Empresa:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Empresa entity.
+     * Cria o formulário para Empresa
      *
-     * @param Empresa $entity The entity
+     * @param Empresa $entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Empresa $entity) {
+    private function createCreateForm(Empresa $entity)
+    {
         $form = $this->createForm(new EmpresaType(), $entity, array(
             'action' => $this->generateUrl('empresa_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Criar'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new Empresa entity.
+     * Exibe um formulário para editar o(a)Empresa.
      *
      */
-    public function newAction() {
-        $entity = new Empresa();
-        $form = $this->createCreateForm($entity);
-
-        return $this->render('BackendBundle:Empresa:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing Empresa entity.
-     *
-     */
-    public function editAction($id) {
+    public function editAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BackendBundle:Empresa')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Empresa entity.');
+            throw $this->createNotFoundException('Não foi possivel encontrar esse(a) Empresa.');
         }
 
         $editForm = $this->createEditForm($entity);
 
         return $this->render('BackendBundle:Empresa:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
         ));
     }
 
     /**
-     * Creates a form to edit a Empresa entity.
-     *
-     * @param Empresa $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Empresa $entity) {
+    * Cria um formulário para editar o(a) Empresa.
+    *
+    * @param Empresa $entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Empresa $entity)
+    {
         $form = $this->createForm(new EmpresaType(), $entity, array(
             'action' => $this->generateUrl('empresa_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Editar'));
 
         return $form;
     }
-
     /**
-     * Edits an existing Empresa entity.
+     * Edita um(a) Empresa
      *
      */
-    public function updateAction(Request $request, $id) {
+    public function updateAction(Request $request, $id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BackendBundle:Empresa')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Empresa entity.');
+            throw $this->createNotFoundException('Não foi possivel encontrar esse(a) Empresa.');
         }
-
 
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
@@ -148,20 +163,26 @@ class EmpresaController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
+            $request->getSession()->getFlashBag()->add(
+                'notice', array(
+                    'message' => 'Empresa editada com sucesso!',
+                    'type' => 'success'
+                )
+            );
+
             return $this->redirect($this->generateUrl('empresa_edit', array('id' => $id)));
         } else {
             $request->getSession()->getFlashBag()->add(
-                    'notice', array(
-                'message' => 'Reveja o formulário, erros foram encontrados.',
-                'type' => 'danger'
-                    )
+                'notice', array(
+                    'message' => 'Ops, tivemos alguns problema, reveja o formulário!',
+                    'type' => 'danger'
+                )
             );
         }
 
         return $this->render('BackendBundle:Empresa:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
         ));
     }
-
 }

@@ -1,0 +1,14 @@
+{% block extends %}
+{{ "{% extends 'BackendBundle:Layout:layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block body -%}" }}
+    <div class="page-title">
+        <h5><i class="fa fa-file-o"></i> Editando o(a) {{ entity }}: {{ '{{ edit_form.vars.value.nome }}' }}</h5>
+    </div>
+
+    {{ '{{ form(edit_form) }}' }}
+
+{{ "{% endblock %}" }}
+{% endblock body %}

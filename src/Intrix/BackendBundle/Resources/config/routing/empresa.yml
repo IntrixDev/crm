@@ -3,7 +3,7 @@ empresa:
     defaults: { _controller: "BackendBundle:Empresa:index" }
 
 empresa_new:
-    path:     /nova
+    path:     /novo
     defaults: { _controller: "BackendBundle:Empresa:new" }
 
 empresa_create:
