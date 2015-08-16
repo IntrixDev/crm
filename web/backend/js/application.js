@@ -328,7 +328,8 @@ $(function () {
     //===== Select with filter input =====//
 
     $(".select-search").select2({
-        width: 200
+        width: 200,
+        readonly: true
     });
 
 
@@ -394,8 +395,8 @@ $(function () {
 
     //===== Disabled select =====//
 
-    $(".select-disabled").select2(
-            "enable", false
+    $(".select-readonly").select2(
+            "readonly", true
             );
 
 
@@ -602,6 +603,19 @@ $(function () {
 
 
     //===== jQuery UI Datepicker =====//
+
+    $('.datetimepicker').datetimepicker({
+        lang: 'pt-BR',
+        format: 'd/m/Y H:i',
+        mask: true,
+        step: 30,
+        minTime: '8:00',
+        maxTime: '18:00',
+        defaultDate: $(this).val().substr(0, 10),
+        formatDate: 'd/m/Y',
+        defaultTime: $(this).val().substr(11, 5),
+        formatTime: 'H:i'
+    });
 
     $(".datepicker").datepicker({
         showOtherMonths: true

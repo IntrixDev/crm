@@ -63,10 +63,20 @@ class Empresa {
     private $data;
 
     /**
+     * @ORM\OneToMany(targetEntity="Intrix\ContatoBundle\Entity\Contato", mappedBy="empresa")
+     * */
+    private $contatos;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Seguimento", inversedBy="empresas")
      * @ORM\JoinColumn(name="seguimento_id", referencedColumnName="id")
      * */
     private $seguimento;
+
+    public function __construct() {
+        $this->contatos = new \Doctrine\Common\Collections\ArrayCollection();
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -209,4 +219,38 @@ class Empresa {
         return $this->seguimento;
     }
 
+
+    /**
+     * Add contato
+     *
+     * @param \Intrix\ContatoBundle\Entity\Contato $contato
+     *
+     * @return Empresa
+     */
+    public function addContato(\Intrix\ContatoBundle\Entity\Contato $contato)
+    {
+        $this->contatos[] = $contato;
+    
+        return $this;
+    }
+
+    /**
+     * Remove contato
+     *
+     * @param \Intrix\ContatoBundle\Entity\Contato $contato
+     */
+    public function removeContato(\Intrix\ContatoBundle\Entity\Contato $contato)
+    {
+        $this->contatos->removeElement($contato);
+    }
+
+    /**
+     * Get contatos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContatos()
+    {
+        return $this->contatos;
+    }
 }

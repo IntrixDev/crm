@@ -1,0 +1,21 @@
+contato:
+    path:     /
+    defaults: { _controller: "ContatoBundle:Contato:index" }
+
+contato_new:
+    path:     /novo
+    defaults: { _controller: "ContatoBundle:Contato:new" }
+
+contato_create:
+    path:     /criar
+    defaults: { _controller: "ContatoBundle:Contato:create" }
+    methods:  POST
+
+contato_edit:
+    path:     /{id}/editar
+    defaults: { _controller: "ContatoBundle:Contato:edit" }
+
+contato_update:
+    path:     /{id}/atualizar
+    defaults: { _controller: "ContatoBundle:Contato:update" }
+    methods:  [POST, PUT]

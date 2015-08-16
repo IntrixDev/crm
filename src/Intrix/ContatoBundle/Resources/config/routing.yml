@@ -1,3 +1,4 @@
-contato_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ContatoBundle:Default:index }
+contato_contato:
+    resource: "@ContatoBundle/Resources/config/routing/contato.yml"
+    prefix:   /contato
+

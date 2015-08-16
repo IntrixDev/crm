@@ -1,0 +1,60 @@
+{% extends 'BackendBundle:Layout:layout.html.twig' %}
+
+{% block body -%}
+    <!-- Page title -->
+    <div class="page-title">
+        <h5><i class="fa fa-file-o"></i> Lista de Contato.</h5>
+        <div class="btn-group">
+            <a href="#" class="btn btn-link btn-lg btn-icon dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i><span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="{{ path('contato_new') }}">Adicionar um(a) novo(a) Contato</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">Contato</h6>
+        </div>
+        <div class="datatable">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Faleicom</th>
+                        <th>Falarcom</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Envieiemail</th>
+                        <th>Interesse</th>
+                        <th>Proximocontato</th>
+                        <th>Data</th>
+                        <th>Observacao</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in entities %}
+                        <tr class="success">
+                            <td>{{ entity.id }}</td>
+                            <td>{{ entity.faleiCom }}</td>
+                            <td>{{ entity.falarCom }}</td>
+                            <td>{{ entity.telefone }}</td>
+                            <td>{{ entity.email }}</td>
+                            <td>{{ entity.envieiEmail }}</td>
+                            <td>{{ entity.interesse }}</td>
+                            <td>{{ entity.proximoContato|date('d/m/Y H:i:s') }}</td>
+                            <td>{{ entity.data|date('d/m/Y H:i:s') }}</td>
+                            <td>{{ entity.observacao }}</td>
+                            <td>
+                                <div class="table-controls">
+                                    <a title="" class="btn btn-default btn-icon btn-xs tip" href="{{ path('contato_edit', { 'id': entity.id }) }}" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

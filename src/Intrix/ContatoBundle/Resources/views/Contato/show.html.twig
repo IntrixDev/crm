@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Contato</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Faleicom</th>
+                <td>{{ entity.faleiCom }}</td>
+            </tr>
+            <tr>
+                <th>Falarcom</th>
+                <td>{{ entity.falarCom }}</td>
+            </tr>
+            <tr>
+                <th>Telefone</th>
+                <td>{{ entity.telefone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Envieiemail</th>
+                <td>{{ entity.envieiEmail }}</td>
+            </tr>
+            <tr>
+                <th>Interesse</th>
+                <td>{{ entity.interesse }}</td>
+            </tr>
+            <tr>
+                <th>Proximocontato</th>
+                <td>{{ entity.proximoContato|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ entity.data|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Observacao</th>
+                <td>{{ entity.observacao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('contato') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('contato_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
