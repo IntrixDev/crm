@@ -7,4 +7,39 @@
 
     {{ form(edit_form) }}
 
+    {% if entity.getContatos|length > 0 %}
+        <div class="panel panel-default">
+            <div class="panel-heading"><h6 class="panel-title">Registro de contato</h6></div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Falei Com</th>
+                            <th>Falar Com</th>
+                            <th>Telefone</th>
+                            <th>Interesse</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contato in entity.getContatos %}
+                            <tr class="success">
+                                <td>{{ contato.faleiCom }}</td>
+                                <td>{{ contato.falarCom }}</td>
+                                <td>{{ contato.telefone }}</td>
+                                <td>{{ contato.interesse }}</td>
+                                <td>{{ contato.data|date('d/m/Y H:i:s') }}</td>
+                                <td>
+                                    <div class="table-controls">
+                                        <a title="" class="btn btn-default btn-icon btn-xs tip" href="{{ path('contato_edit', { 'id': contato.id }) }}" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
