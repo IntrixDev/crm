@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Seguimento
  *
- * @ORM\Table()
+ * @ORM\Table(name="seguimento")
  * @ORM\Entity
  */
 class Seguimento {

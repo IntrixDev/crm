@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contato
  *
- * @ORM\Table()
+ * @ORM\Table(name="contato")
  * @ORM\Entity(repositoryClass="Intrix\ContatoBundle\Entity\ContatoRepository")
  */
 class Contato {

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Dashboard
  *
- * @ORM\Table()
+ * @ORM\Table(name="dashboard")
  * @ORM\Entity(repositoryClass="Intrix\DashboardBundle\Entity\DashboardRepository")
  */
 class Dashboard
