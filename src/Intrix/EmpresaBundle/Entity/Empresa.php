@@ -75,7 +75,6 @@ class Empresa {
 
     public function __construct() {
         $this->contatos = new \Doctrine\Common\Collections\ArrayCollection();
-        parent::__construct();
     }
 
     /**
