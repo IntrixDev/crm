@@ -1,5 +1,10 @@
 {% extends 'BackendBundle:Layout:layout.html.twig' %}
 
-{% block body %}
+{% block body -%}
+    <div class="page-title">
+        <h5><i class="fa fa-file-o"></i> Editando o(a) Seguimento: {{ edit_form.vars.value.nome }}</h5>
+    </div>
+
     {{ form(edit_form) }}
+
 {% endblock %}
