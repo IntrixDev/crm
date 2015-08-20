@@ -27,7 +27,7 @@ class Empresa {
      * @var string
      * 
      * @Assert\NotBlank(message = "Esse campo não pode ficar em branco.")
-     * @ORM\Column(name="nome", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
 
@@ -35,7 +35,7 @@ class Empresa {
      * @var string
      * 
      * @Assert\NotBlank(message = "Esse campo não pode ficar em branco.")
-     * @ORM\Column(name="telefone", type="string", length=255, nullable=true)
+     * @ORM\Column(name="telefone", type="string", length=255)
      */
     private $telefone;
 
@@ -43,14 +43,14 @@ class Empresa {
      * @var string
      *
      * @Assert\Url(message = "Essa site não confere. Insira 'http://' no inicio da URL")
-     * @ORM\Column(name="site", type="string", length=255)
+     * @ORM\Column(name="site", type="string", length=255, nullable=true)
      */
     private $site;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="observacao", type="string", length=400)
+     * @ORM\Column(name="observacao", type="string", length=400, nullable=true)
      */
     private $observacao;
 

@@ -1,3 +1,7 @@
+empresa_seguimento:
+    resource: "@EmpresaBundle/Resources/config/routing/seguimento.yml"
+    prefix:   /seguimento
+
 backend_empresa:
     resource: "@EmpresaBundle/Resources/config/routing/empresa.yml"
     prefix:   /
