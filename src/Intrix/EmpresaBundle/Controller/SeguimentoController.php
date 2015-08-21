@@ -66,7 +66,7 @@ class SeguimentoController extends Controller
                 )
             );
 
-            return $this->redirect($this->generateUrl('seguimento'));
+            return $this->redirect($this->generateUrl('empresa_new'));
 
         } else {
             $request->getSession()->getFlashBag()->add(

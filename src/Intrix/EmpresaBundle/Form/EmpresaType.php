@@ -21,7 +21,8 @@ class EmpresaType extends AbstractType {
                     'attr' => array(
                         'data-placeholder' => 'Escolha um seguimento...',
                         'class' => 'select-search',
-                        'tabindex' => '2'
+                        'tabindex' => '2',
+                        'modal_form' => 'Adicionar novo seguimento'
                     ),
                     'label' => 'Seguimento',
                 ))

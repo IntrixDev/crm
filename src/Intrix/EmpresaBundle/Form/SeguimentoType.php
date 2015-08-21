@@ -37,7 +37,6 @@ class SeguimentoType extends AbstractType {
             'attr' => array(
                 'class' => 'form-horizontal',
                 'role' => 'form',
-                'titulo' => 'Seguimento'
             ),
         ));
     }

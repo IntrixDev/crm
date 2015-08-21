@@ -30,13 +30,15 @@
     {% block form_widget_compound %}
         {% spaceless %}
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h6 class="panel-title">
-                        {% if attr.titulo is defined %}
-                            {{attr.titulo}}
-                        {% endif %}
-                    </h6>
-                </div>
+                {% if attr.titulo is defined %}
+                    <div class="panel-heading">
+                        <h6 class="panel-title">
+                            {% if attr.titulo is defined %}
+                                {{attr.titulo}}
+                            {% endif %}
+                        </h6>
+                    </div>
+                {% endif %}
                 <div class="panel-body">
                     {% for flashMessage in app.session.flashbag.get('notice') %}
                         <div class="alert bg-{{ flashMessage.type }} fade in widget-inner">
@@ -113,6 +115,9 @@
                     {% set options = choices %}
                     {{ block('choice_widget_options') }}
                 </select>
+                {% if attr.modal_form is defined %}
+                    &nbsp;<a data-toggle="modal" role="button" href="#form_modal" class="btn btn-success btn-icon btn-xs tip" title="" data-original-title="{{ attr.modal_form }}"><i class="fa fa-link"></i></a>
+                {% endif %}
             </div>
         {% endspaceless %}
     {% endblock choice_widget_collapsed %}

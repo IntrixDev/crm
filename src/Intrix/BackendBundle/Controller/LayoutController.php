@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class LayoutController extends Controller {
 
     public function navLeftAction($local) {
-        return $this->render('BackendBundle:Layout:nav_left.html.twig');
+        return $this->render('BackendBundle:Layout:nav_left.html.twig', array(
+                    'local' => $local
+        ));
     }
 
     public function navTopAction($local) {

@@ -854,7 +854,15 @@ $(function () {
 
     //===== Collapsible navigation =====//
 
-    $('.expand').collapsible({
+    $('.expand').click(function () {
+        if ($(this).parents('ul').find(".level-opened").length > 0) {
+            var a = $(this).parents('ul').find(".level-opened");
+            a.switchClass('level-opened', 'level-closed', 150);
+            a.next('ul').hide(150);
+        }
+
+
+    }).collapsible({
         defaultOpen: 'second-level,third-level',
         cssOpen: 'level-opened',
         cssClose: 'level-closed',
